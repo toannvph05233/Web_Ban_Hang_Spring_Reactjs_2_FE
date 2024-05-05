@@ -1,0 +1,87 @@
+.App .login-container {
+  min-height: 500px;
+  display : flex;
+  flex-direction: column;
+  margin: 0 auto ;
+  .title {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 600;
+    padding: 30px;
+  }
+  .text {
+    font-weight: 600;
+    padding-bottom: 3px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .button-send-email {
+    margin-left: 10px;
+    margin-top : -2px ;
+    font-size: 15px;
+  }
+  input {
+    font-size: 14px;
+    padding :12px 7px ;
+    outline: none;
+    background: #1618230f;
+    border :#1618230f ;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    width: 100%;
+    //&:hover {
+    //  background-color: #dedede;
+    //  border : 1px solid #dedede ;
+    //}
+  }
+  .input-password {
+    font-size: 14px;
+    position: relative;
+    i{
+      cursor:pointer;
+      position: absolute;
+      top: 17px ;
+      right: 10px;
+    }
+  }
+  button {
+    margin-left: 40%;
+    font-size: 14px;
+    margin-top: 15px;
+    padding : 10px ;
+    border-radius : 3px ;
+    outline: none ;
+    border : none ;
+
+    &.active{
+      background-color: #fe2c55 ;
+      color : white ;
+      border: 2px solid #fe2c55 !important; ;
+    }
+  }
+  button[disabled=disabled] , button:disabled {
+    cursor: not-allowed;
+  }
+
+  .back {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+    cursor : pointer ;
+    color: black !important;
+  }
+  .back:hover {
+    color: red;
+  }
+  .formik-error-message {
+    color: red; /* Màu đỏ */
+    font-size: 14px; /* Kích thước font chữ */
+    /* Các thuộc tính CSS khác theo ý muốn */
+  }
+  .link {
+    font-size: 14px;
+    color: black !important;
+    //margin-left: 20px;
+  }
+}
+

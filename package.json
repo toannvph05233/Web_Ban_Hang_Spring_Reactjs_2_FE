@@ -1,0 +1,92 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@headlessui/react": "^1.6.6",
+    "@heroicons/react": "^1.0.6",
+    "@mui/material": "^5.14.17",
+    "@mui/x-charts": "^6.18.1",
+    "@reduxjs/toolkit": "^1.9.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.1",
+    "bootstrap": "^5.3.2",
+    "chart.js": "^4.4.0",
+    "date-fns": "^2.30.0",
+    "firebase": "^10.5.0",
+    "flowbite-react": "^0.6.4",
+    "formik": "^2.4.5",
+    "gapi-script": "^1.2.0",
+    "google-map-react": "^2.2.1",
+    "mdb-react-ui-kit": "^6.3.0",
+    "moment": "^2.29.4",
+    "moon": "^1.0.0-beta.7",
+    "net": "^1.0.2",
+    "notistack": "^3.0.1",
+    "nouislider-react": "^3.4.1",
+    "primereact": "^10.1.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
+    "react-google-places-autocomplete": "^4.0.1",
+    "react-icons": "^4.11.0",
+    "react-modal": "^3.16.1",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.18.0",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.8.0",
+    "react-slick": "^0.29.0",
+    "react-slideshow-image": "^4.3.0",
+    "react-spinners": "^0.13.8",
+    "react-table-scroll": "^0.1.0",
+    "react-toastify": "^9.1.3",
+    "recharts": "^2.10.1",
+    "sass": "^1.56.1",
+    "semantic-ui-react": "^2.1.4",
+    "slick-carousel": "^1.8.1",
+    "slide": "^1.1.6",
+    "slider-moon": "^1.0.3",
+    "sockjs-client": "^1.5.2",
+    "stompjs": "^2.3.3",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.10.1",
+    "swiper": "^11.0.4",
+    "uuid": "^9.0.1",
+    "web-vitals": "^2.1.4",
+    "websocket": "^1.0.34",
+    "yup": "^1.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

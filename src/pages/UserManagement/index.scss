@@ -1,0 +1,105 @@
+// Dashboard.module.scss
+
+$nav-background: #323250;
+$nav-item-hover-background: #34495e;
+$nav-text-color: #ecf0f1;
+$nav-hover-text-color: #f1c40f;
+$nav-item-active-background: #2980b9;
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav {
+
+  width: 250px; // Điều chỉnh chiều rộng của nav nếu cần
+  background-color: white;
+  min-height: 100%;
+  box-shadow: white;
+  color: black !important;
+  &__list {
+    margin-left: 15%;
+    list-style-type: none;
+    padding: 20px;
+    >li {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    &__item {
+
+      a {
+        display: block;
+        padding: 15px 20px;
+
+        text-decoration: none;
+        font-size: 30px;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: $nav-item-hover-background;
+          color: $nav-hover-text-color;
+        }
+
+        &.active {
+          background-color: $nav-item-active-background;
+          color: $nav-hover-text-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+  overflow-y: auto;
+}
+
+// css cho ordermanagement
+
+// Trong file CSS hoặc SCSS của bạn (ví dụ: OrderUser.scss)
+.orderManagement {
+  max-width: 1000px; // Giới hạn chiều rộng của bảng
+  margin-top: 2rem; // Khoảng cách từ top
+}
+
+.table {
+  // Thêm box-shadow để bảng nổi bật
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  // Làm đẹp headers
+  thead th {
+    background-color: #007bff; // Màu nền cho headers
+    color: white; // Màu chữ cho headers
+  }
+
+  // Thêm hover effect cho từng hàng
+  tbody tr:hover {
+    background-color: #fff; // Màu nền khi hover
+  }
+}
+
+// Căn chỉnh văn bản trong bảng cho đẹp
+td, th {
+  text-align: center; // Căn giữa cho text
+  vertical-align: middle; // Căn giữa dọc
+  padding: 0.75rem; // Padding cho cells
+
+  &:first-child {
+    text-align: left; // Căn trái cho cell đầu tiên (mã đơn hàng)
+  }
+}
+
+// Nếu bạn muốn responsive, bạn có thể sử dụng class `table-responsive` từ Bootstrap
+.table-responsive {
+  overflow-x: auto; // Cho phép cuộn ngang trên thiết bị nhỏ
+}
+.cekkonn {
+  color : #121517 !important;
+  font-weight: bold;
+
+}

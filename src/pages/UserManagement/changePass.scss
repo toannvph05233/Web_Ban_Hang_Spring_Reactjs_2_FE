@@ -1,0 +1,15 @@
+button {
+  margin-left: 40%;
+  font-size: 14px;
+  margin-top: 15px;
+  padding : 10px ;
+  border-radius : 3px ;
+  outline: none ;
+  border : none ;
+
+  &.active{
+    background-color: #fe2c55 ;
+    color : white ;
+    border: 2px solid #fe2c55 !important; ;
+  }
+}

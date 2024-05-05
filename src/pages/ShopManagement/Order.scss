@@ -1,0 +1,30 @@
+/* styles.css */
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-item {
+  margin: 10px 40px 5px;
+  border-bottom : 2px solid #FFEEE8;
+}
+
+.nav-link {
+  color: black !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+}
+.nav-item.selected {
+  border-bottom: 2px solid red   /* Gạch chân màu đỏ */
+}
+
+.nav-link.selected {
+  color: red !important; /* Chữ màu đỏ */
+}
+.naV {
+  margin-left: 100px;
+  //position: fixed;
+}

@@ -1,0 +1,30 @@
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+}
+
+.pagination-container li {
+  display: inline-block;
+  margin: 10px;
+  scale: 1.2;
+
+}
+
+.pagination-container li a {
+  color: #797474 !important;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color:  #F5F5F5;
+
+}
+
+.pagination-container li.active a {
+  background-color: red;
+  color: white !important;
+}
