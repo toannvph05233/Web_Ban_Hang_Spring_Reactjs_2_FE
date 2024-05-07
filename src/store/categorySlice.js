@@ -44,18 +44,20 @@ const categorySlice = createSlice({
 });
 
 export const fetchAsyncCategories = createAsyncThunk('categories/fetch', async() => {
-    const response = await fetch(`${BASE_URL}products/categories`);
+    const response = await fetch(`http://localhost:8080/api/categories`);
     const data = await response.json();
     return data;
 });
 
 export const fetchAsyncProductsOfCategory = createAsyncThunk('category-products/fetch', async(category) => {
-    const response = await fetch(`${BASE_URL}products/category/${category}`);
+    const response = await fetch(`http://localhost:8080/api/products/category/${category}`);
     const data = await response.json();
-    return data.products;
+    return data;
 });
 
 export const getAllCategories = (state) => state.category.categories;
+
 export const getAllProductsByCategory = (state) => state.category.categoryProducts;
+
 export const    getCategoryProductsStatus = (state) => state.category.categoryProductsStatus;
 export default categorySlice.reducer;
