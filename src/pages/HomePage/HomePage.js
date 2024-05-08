@@ -63,23 +63,27 @@ const HomePage = () => {
                     <div className='categories py-5'>
                         <div className='categories-item'>
                             <div className='title-md'>
-                                <h3>GỢI Ý HÔM NAY </h3>
+                                <h3>Giá Tốt Nhất</h3>
 
                             </div>
                             {products === STATUS.LOADING ? <Loader/> : <ProductList2 products={tempProducts}/>}
                         </div>
-                        {categories.map((item) => (
-                            // (item.length > 0) ?
-                                <div className='categories-item'>
-                                    <div className='title-md'>
-                                        <h3>{item?.name}</h3>
-                                    </div>
-                                    {item === STATUS.LOADING ? <Loader/> : <ListPrd categories={item?.id}/>}
+                        <div className='categories-item'>
+                            <div className='title-md'>
+                                <h3>Sản Phẩm Mới</h3>
 
+                            </div>
+                            {products === STATUS.LOADING ? <Loader/> : <ProductList2 products={products}/>}
+                        </div>
+                        {categories.slice(0, 2).map((item) => (
+                            <div className='categories-item'>
+                                <div className='title-md'>
+                                    <h3>{item?.name}</h3>
                                 </div>
-                                // :
-                                // <div></div>
+                                {item === STATUS.LOADING ? <Loader/> : <ListPrd categories={item?.id}/>}
+                            </div>
                         ))}
+
                     </div>
 
                 </div>

@@ -1,31 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import "./BillDone.scss";
-import {shopping_cart} from '../../utils/images';
-import {Link} from 'react-router-dom';
-import {formatPrice} from '../../utils/helpers';
-import {showBillByAccountAndStatus} from "../../service/BillService";
-import {findUserByAccount} from "../../pages/UserManagement/Service/UserService";
-import {CiShop} from "react-icons/ci";
-import {BsArrowThroughHeart} from "react-icons/bs";
-import {IoLocationOutline} from "react-icons/io5";
+import { shopping_cart } from '../../utils/images';
+import { Link } from 'react-router-dom';
+import { formatPrice } from '../../utils/helpers';
+import { showBillByAccountAndStatus } from "../../service/BillService";
+import { findUserByAccount } from "../../pages/UserManagement/Service/UserService";
+import { CiShop } from "react-icons/ci";
+import { BsArrowThroughHeart } from "react-icons/bs";
+import { IoLocationOutline } from "react-icons/io5";
 import CommentUser from "./ModalComment";
-import {FaX} from "react-icons/fa6";
+import { FaX } from "react-icons/fa6";
 import Cancel from "./ModalCancel";
+import ReactToPrint from 'react-to-print';
 
+// Import xlsx library
+import * as XLSX from 'xlsx';
 
-const DoneUser = () => {
-    const idAccount = localStorage.getItem("account")
-    const [bills, setBills] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
-    const [user, setUser] = useState({})
-    const status = "Đã giao"
-    const [bill1, setBill1] = useState([])
-    const [listBillByBillDetail, setListBillByBillDetail] = useState([])
+const DoneUser = forwardRef((props, ref) => {
+    const componentRef = useRef();
 
+    const idAccount = localStorage.getItem("account");
+    const [bills, setBills] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [user, setUser] = useState({});
+    const status = "Đã giao";
+    const [bill1, setBill1] = useState([]);
+    const [listBillByBillDetail, setListBillByBillDetail] = useState([]);
 
     useEffect(() => {
         showBillByAccountAndStatus(idAccount, status).then((response) => {
-            setBills(response)
+            setBills(response);
             const checkBill = [];
             response.forEach((billDetail) => {
                 if (!checkBill.includes(billDetail.bill.id)) {
@@ -56,7 +60,6 @@ const DoneUser = () => {
         listBillByBillDetail();
     }, [bills, bill1]);
 
-
     useEffect(() => {
         let totalPrice = 0;
         for (let i = 0; i < bills.length; i++) {
@@ -66,13 +69,10 @@ const DoneUser = () => {
     }, [bills]);
 
     useEffect(() => {
-        console.log(idAccount)
         findUserByAccount(idAccount).then((res) => {
             setUser(res)
         })
     }, [])
-
-
 
     const checkEmpty = (list) => {
         for (let i = 0; i < list.length; i++) {
@@ -80,6 +80,7 @@ const DoneUser = () => {
                 return true;
             }
         }
+        return false;
     }
 
     function sumQuantity(id) {
@@ -102,15 +103,41 @@ const DoneUser = () => {
         return price;
     }
 
+    const exportToExcel = (bill) => {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet([
+            {
+                'Mã đơn hàng': `2903VDC02${bill[0]?.bill?.id}`,
+                'Ngày nhận': bill[0]?.bill?.date,
+                'Tên người nhận': user?.name,
+                'Số điện thoại người nhận': user?.phone,
+                'Địa chỉ nhận hàng': `${user?.address} ${user?.wards?.name}, ${user?.wards?.district?.name}, ${user?.wards?.district?.city?.name}`,
+            },
+            ...bill.map(billDetail => ({
+                'Tên sản phẩm': billDetail?.product?.name,
+                'Số lượng': billDetail?.quantity,
+                'Giá': billDetail?.price,
+                'Tổng tiền': billDetail?.total,
+            }))
+        ]);
+        XLSX.utils.book_append_sheet(wb, ws, 'Bill');
+
+        XLSX.writeFile(wb, 'bills.xlsx');
+    };
+
     return (
         <>
+            <ReactToPrint
+                trigger={() => <button className="btn btn-info ls-2 mb-3">In Hóa Đơn</button>}
+                content={() => componentRef.current}
+            />
             {checkEmpty(listBillByBillDetail) ?
-                <div className='cart bg-whitesmoke'>
+                <div className='cart bg-whitesmoke' ref={componentRef}>
                     <div className='containerr'>
                         <div className='cart-ctable2'>
-                            <div className='cart-chead bg-white' style={{height: "50px"}}>
-                                <div style={{display: "flex"}}><h3 style={{color: "red", paddingTop: "11px"}}>
-                                    <IoLocationOutline style={{scale: "1.2", marginRight: "5px"}}/>Địa chỉ nhận hàng :
+                            <div className='cart-chead bg-white' style={{ height: "50px" }}>
+                                <div style={{ display: "flex" }}><h3 style={{ color: "red", paddingTop: "11px" }}>
+                                    <IoLocationOutline style={{ scale: "1.2", marginRight: "5px" }} />Địa chỉ nhận hàng :
                                 </h3>
                                     <b style={{
                                         fontSize: "15px",
@@ -147,9 +174,12 @@ const DoneUser = () => {
                             </div>
 
                             <div className='cart-cbody bg-white'>
+
                                 {
                                     listBillByBillDetail.map((bill, index) => {
                                         return (<>
+                                            <br />
+                                            <button className="btn btn-info ls-2 mb-3" onClick={() => exportToExcel(bill)}>Xuất Excel</button>
                                             <div className='cart-ctr fw-8 font-manrope fs-16'
                                                  style={{
                                                      padding: "14px 15px",
@@ -158,42 +188,40 @@ const DoneUser = () => {
                                                      margin: "0 0"
                                                  }}>
                                                 <div className='cart-cth shop-name'
-                                                     style={{fontSize: "16px", maxHeight: "50px", display: "flex"}}>
-                                                    <div style={{width: "830px", marginTop: "5px"}}>
-                                                        <CiShop style={{transform: "scale(1.5)", marginRight: "13px"}}/>
+                                                     style={{ fontSize: "16px", maxHeight: "50px", display: "flex" }}>
+                                                    <div style={{ width: "830px", marginTop: "5px" }}>
+                                                        <CiShop style={{ transform: "scale(1.5)", marginRight: "13px" }} />
                                                         <Link
                                                             to={"/shop-management/shop-profile/" + bill[0]?.product?.shop?.id}>
-                                                        <span style={{
-                                                            color: "#BB0F53",
-                                                            marginRight: "7px"
-                                                        }}>{bill[0]?.product?.shop?.name}</span>
+                                                            <span style={{
+                                                                color: "#BB0F53",
+                                                                marginRight: "7px"
+                                                            }}>{bill[0]?.product?.shop?.name}</span>
                                                         </Link>
                                                         <BsArrowThroughHeart style={{
                                                             transform: "scale(1.3)",
                                                             marginRight: "10px",
                                                             color: "E70B21"
-                                                        }}/>
+                                                        }} />
                                                     </div>
-                                                    <div style={{width: "300px"}}>
-                                                      <span style={{
-                                                          color: "#BB0F53"
-                                                      }}>Ngày nhận: {bill[0]?.bill?.date}</span>
+                                                    <div style={{ width: "300px" }}>
+                                                        <span style={{
+                                                            color: "#BB0F53"
+                                                        }}>Ngày nhận: {bill[0]?.bill?.date}</span>
                                                     </div>
                                                 </div>
-
-
                                             </div>
                                             <div className='cart-ctr fw-8 font-manrope fs-16'
-                                                 style={{padding: "14px 15px", display: "flex", margin: "0 0"}}>
-                                                <div style={{height: '50px'}}>
-                                                    <div style={{padding: '10px', display: "flex"}}>
-                                                        <div style={{width: '650px'}}>
+                                                 style={{ padding: "14px 15px", display: "flex", margin: "0 0" }}>
+                                                <div style={{ height: '50px' }}>
+                                                    <div style={{ padding: '10px', display: "flex" }}>
+                                                        <div style={{ width: '650px' }}>
                                                             <span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
-                                                        <div style={{width: '120px', marginLeft: '10px'}}>  <span
-                                                            style={{marginLeft: "0px"}}>{sumQuantity(bill[0].bill.id)}</span>
+                                                        <div style={{ width: '120px', marginLeft: '10px' }}>  <span
+                                                            style={{ marginLeft: "0px" }}>{sumQuantity(bill[0].bill.id)}</span>
                                                         </div>
-                                                        <div style={{width: '150px', marginLeft: '0px'}}><span
-                                                            style={{marginLeft: "30px"}}>{formatPrice(sumPrice(bill[0].bill.id))}</span>
+                                                        <div style={{ width: '150px', marginLeft: '0px' }}><span
+                                                            style={{ marginLeft: "30px" }}>{formatPrice(sumPrice(bill[0].bill.id))}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -207,7 +235,7 @@ const DoneUser = () => {
                                                                 <span className='cart-ctxt'>{index + 1}</span>
                                                             </div>
                                                             <div className='cart-ctd'
-                                                                 style={{display: 'flex', alignItems: 'center'}}>
+                                                                 style={{ display: 'flex', alignItems: 'center' }}>
                                                                 <img
                                                                     style={{
                                                                         width: "60px",
@@ -221,20 +249,19 @@ const DoneUser = () => {
                                                                     className='cart-ctxt'>{billDetail?.product?.name}</span>
                                                             </div>
                                                             <div className='cart-ctd'>
-                                          <span className='cart-ctxt'>
-                                           (<del>{formatPrice(billDetail.product.price)}</del>) / {formatPrice(billDetail.price)}
-                                          </span>
+                                                                <span className='cart-ctxt'>
+                                                                    (<del>{formatPrice(billDetail.product.price)}</del>) / {formatPrice(billDetail.price)}
+                                                                </span>
                                                             </div>
-                                                            <div className='cart-ctd' style={{marginLeft: "27px"}}>
+                                                            <div className='cart-ctd' style={{ marginLeft: "27px" }}>
                                                                 <span className='cart-ctxt'>{billDetail.quantity}</span>
                                                             </div>
                                                             <div className='cart-ctd'>
                                                                 <billDetail
                                                                     className='cart-ctxt text-orange fw-5'
-                                                                    style={{marginLeft: "20px"}}>{formatPrice(billDetail.total)}</billDetail>
-                                                                <CommentUser modalComment={billDetail?.product}/>
+                                                                    style={{ marginLeft: "20px" }}>{formatPrice(billDetail.total)}</billDetail>
+                                                                <CommentUser modalComment={billDetail?.product} />
                                                             </div>
-
                                                         </div>
                                                     )
                                                 })}
@@ -251,7 +278,13 @@ const DoneUser = () => {
                                     <div
                                         className='total-txt flex align-center justify-end'>
                                         <div className='font-manrope fw-10'
-                                             style={{fontSize: "15px", fontStyle: "normal", marginTop: "5px", textAlign: "right", width: "910px"}}>Tổng
+                                             style={{
+                                                 fontSize: "15px",
+                                                 fontStyle: "normal",
+                                                 marginTop: "5px",
+                                                 textAlign: "right",
+                                                 width: "910px"
+                                             }}>Tổng
                                             tiền:
                                         </div>
                                         <span className='text-orange fs-22 mx-2 fw-6'>{formatPrice(totalPrice)}</span>
@@ -264,7 +297,7 @@ const DoneUser = () => {
                 : <div className='containerr my-5'>
 
                     <div className='empty-cart flex justify-center align-center flex-column font-manrope'>
-                        <img src={shopping_cart} alt=""/>
+                        <img src={shopping_cart} alt="" />
                         <span className='fw-6 fs-15 text-gray'>Đơn hàng trống</span>
                         <Link to="/" className='shopping-btn bg-orange text-white fw-5'>Mua hàng ngay!</Link>
                     </div>
@@ -272,6 +305,6 @@ const DoneUser = () => {
 
         </>
     )
-}
+});
 
-export default DoneUser
+export default DoneUser;

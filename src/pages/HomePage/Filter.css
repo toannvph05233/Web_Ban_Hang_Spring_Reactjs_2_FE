@@ -1,0 +1,41 @@
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.price-range {
+    flex: 0.5;
+    margin-right: 20px;
+}
+
+.slider-container {
+    position: relative;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-select {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    background-color: rgb(215, 0, 24);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-left: 2%;
+    margin-top: 1%;
+}

@@ -11,7 +11,7 @@ const ProductSlide = ({product}) => {
                 <div className='category'>- {product?.promotion} %</div>
                 <div className='product-item-img'>
                     <img className='img-cover' src={product?.image[0]?.name} alt={product.name}
-                         style={{width: '200px', height: '200px', marginLeft: '16px', marginTop: '40px'}}/>
+                         style={{width: '100%', height: '100%', marginLeft: '2%', marginTop: '5%'}}/>
                 </div>
                 <div className='product-item-info fs-14'>
                     {/*<div className='brand'>*/}
