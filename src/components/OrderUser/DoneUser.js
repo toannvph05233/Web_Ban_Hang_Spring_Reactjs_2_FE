@@ -189,7 +189,7 @@ const DoneUser = forwardRef((props, ref) => {
                                                  }}>
                                                 <div className='cart-cth shop-name'
                                                      style={{ fontSize: "16px", maxHeight: "50px", display: "flex" }}>
-                                                    <div style={{ width: "830px", marginTop: "5px" }}>
+                                                    <div style={{ width: "730px", marginTop: "5px" }}>
                                                         <CiShop style={{ transform: "scale(1.5)", marginRight: "13px" }} />
                                                         <Link
                                                             to={"/shop-management/shop-profile/" + bill[0]?.product?.shop?.id}>
@@ -215,7 +215,7 @@ const DoneUser = forwardRef((props, ref) => {
                                                  style={{ padding: "14px 15px", display: "flex", margin: "0 0" }}>
                                                 <div style={{ height: '50px' }}>
                                                     <div style={{ padding: '10px', display: "flex" }}>
-                                                        <div style={{ width: '650px' }}>
+                                                        <div style={{ width: '550px' }}>
                                                             <span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
                                                         <div style={{ width: '120px', marginLeft: '10px' }}>  <span
                                                             style={{ marginLeft: "0px" }}>{sumQuantity(bill[0].bill.id)}</span>
@@ -283,7 +283,7 @@ const DoneUser = forwardRef((props, ref) => {
                                                  fontStyle: "normal",
                                                  marginTop: "5px",
                                                  textAlign: "right",
-                                                 width: "910px"
+
                                              }}>Tổng
                                             tiền:
                                         </div>

@@ -187,7 +187,7 @@ const PendingUser = () => {
                                                  }}>
                                                 <div className='cart-cth shop-name'
                                                      style={{fontSize: "16px", maxHeight: "50px", display: "flex"}}>
-                                                    <div style={{width: "920px", marginTop: "10px"}}>
+                                                    <div style={{width: "820px", marginTop: "10px"}}>
                                                         <CiShop style={{transform: "scale(1.5)", marginRight: "13px"}}/>
                                                         <Link
                                                             to={"/shop-management/shop-profile/" + bill[0]?.product?.shop?.id}>
@@ -225,7 +225,7 @@ const PendingUser = () => {
                                                  style={{padding: "14px 15px", display: "flex", margin: "0 0"}}>
                                                 <div style={{height: '50px'}}>
                                                     <div style={{padding: '10px', display: "flex"}}>
-                                                        <div style={{width: '650px'}}>
+                                                        <div style={{width: '550px'}}>
                                                             <span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
                                                         <div style={{width: '80px', marginLeft: '20px'}}>  <span
                                                             style={{marginLeft: "0px"}}>{sumQuantity(bill[0].bill.id)}</span>
@@ -301,8 +301,7 @@ const PendingUser = () => {
                                                  fontSize: "15px",
                                                  fontStyle: "normal",
                                                  marginTop: "5px",
-                                                 textAlign: "right",
-                                                 width: "910px"
+                                                 textAlign: "right"
                                              }}>Tổng
                                             tiền:
                                         </div>

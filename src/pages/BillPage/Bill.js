@@ -221,7 +221,7 @@ const Bill = () => {
                                 <span className='text-orange fs-22 mx-2 fw-6'>{formatPrice(totalPrice)}</span>
                             </div>
 
-                            <button style={{marginLeft: "1050px"}} type="button" className='checkout-btn text-white bg-orange fs-16' onClick={() => {
+                            <button style={{ position: "absolute", right: "20px"}} type="button" className='checkout-btn text-white bg-orange fs-16' onClick={() => {
                                 saveBills()
                             }}>Thanh toán
                             </button>
@@ -242,5 +242,6 @@ const Bill = () => {
         </>
     )
 }
+
 
 export default Bill

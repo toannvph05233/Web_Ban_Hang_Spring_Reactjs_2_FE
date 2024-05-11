@@ -154,7 +154,7 @@ const CancelUser = () => {
                                                  }}>
                                                 <div className='cart-cth shop-name'
                                                      style={{fontSize: "16px", maxHeight: "50px", display: "flex"}}>
-                                                    <div style={{width: "830px", marginTop: "5px"}}>
+                                                    <div style={{width: "730px", marginTop: "5px"}}>
                                                         <CiShop style={{transform: "scale(1.5)", marginRight: "13px"}}/>
                                                         <Link
                                                             to={"/shop-management/shop-profile/" + bill[0]?.product?.shop?.id}>
@@ -245,7 +245,7 @@ const CancelUser = () => {
                                                  fontStyle: "normal",
                                                  marginTop: "5px",
                                                  textAlign: "right",
-                                                 width: "910px"
+
                                              }}>Tổng
                                             tiền:
                                         </div>

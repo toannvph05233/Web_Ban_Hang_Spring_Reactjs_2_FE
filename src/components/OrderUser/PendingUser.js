@@ -213,7 +213,7 @@ const PendingUser = () => {
                                                  style={{padding: "14px 15px", display: "flex", margin: "0 0",}}>
                                                 <div style={{height: '50px'}}>
                                                     <div style={{padding: '10px' ,display :"flex"}}>
-                                                        <div style={{width : '600px'}}><span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
+                                                        <div style={{width : '500px'}}><span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
                                                         <div style={{width : '80px' , marginLeft : '70px'}}>  <span
                                                             style={{marginLeft: "0px"}}>{sumQuantity(bill[0].bill.id)}</span></div>
                                                         <div style={{width : '150px' , marginLeft : '0px'}}><span
@@ -284,7 +284,7 @@ const PendingUser = () => {
                                     <div
                                          className='total-txt flex align-center justify-end'>
                                         <div className='font-manrope fw-10'
-                                             style={{fontSize: "15px", fontStyle: "normal", marginTop: "5px", textAlign: "right", width: "910px"}}>Tổng
+                                             style={{fontSize: "15px", fontStyle: "normal", marginTop: "5px", textAlign: "right"}}>Tổng
                                             tiền:
                                         </div>
                                         <span className='text-orange fs-22 mx-2 fw-6'>{formatPrice(totalPrice)}</span>

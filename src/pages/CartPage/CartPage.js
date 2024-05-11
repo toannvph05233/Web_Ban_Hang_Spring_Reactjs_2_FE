@@ -178,7 +178,7 @@ const CartPage = () => {
 
             {checkEmpty(listCartByShop) ?
                 <div className='cart bg-whitesmoke'>
-                    <div className='containerr'>
+                    <div className='container-fluid'>
                         <div className='cart-ctable1'>
                             <div className='cart-chead bg-white'>
                                 <div className='cart-ctr fw-6 font-manrope fs-15'>
@@ -368,7 +368,8 @@ const CartPage = () => {
                         <span className='fw-6 fs-15 text-gray'>Giỏ hàng trống</span>
                         <Link to="/" className='shopping-btn bg-orange text-white fw-5'>Mua hàng ngay!</Link>
                     </div>
-                </div>}
+                </div>
+            }
 
         </>
     )
