@@ -180,8 +180,11 @@ const CancelUser = () => {
                                                  style={{padding: "14px 15px", display: "flex", margin: "0 0",}}>
                                                 <div style={{height: '50px'}}>
                                                     <div style={{padding: '10px', display: "flex"}}>
-                                                        <div style={{width: '615px'}}>
+                                                        <div style={{width: '350px'}}>
                                                             <span>Mã đơn hàng: 2903VDC02{bill[0]?.bill?.id}</span></div>
+                                                        <div style={{ width: '200px', color: bill[0]?.bill?.payment === 'đã thanh toán' ? 'green' : 'red' }}>
+                                                            <span>{bill[0]?.bill?.payment} </span>
+                                                        </div>
                                                         <div style={{width: '120px', marginLeft: '10px'}}>  <span
                                                             >{sumQuantity(bill[0].bill.id)}</span>
                                                         </div>

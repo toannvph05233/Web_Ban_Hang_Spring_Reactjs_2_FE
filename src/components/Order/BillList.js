@@ -42,6 +42,9 @@ const BillList = (props) => {
                                 <div style={{backgroundColor: 'rgb(232, 232, 232)' , height : '50px' }}>
                                     <div style={{padding: '10px'}} >Mã đơn hàng 2903VDC02{item[0]?.bill?.id}</div>
                                 </div>
+                                <div style={{ width: '200px', color: item[0]?.bill?.payment === 'đã thanh toán' ? 'green' : 'red' }}>
+                                    <span>{item[0]?.bill?.payment} </span>
+                                </div>
                                 {item === STATUS.LOADING ? <Loader /> : <BillDetails bill={item}/>}
                             </div>
                         :
