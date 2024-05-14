@@ -35,15 +35,23 @@ const saveBill = (idAccount, idCartDetails, navigate, selectedPay, total) => {
                     console.log("respresp")
                     console.log("respresp")
                     console.log(resp)
-                    if (selectedPay === "online") {
+                    if (selectedPay === "paypal") {
                         const idList = resp.data.map(item => item.id);
 
-                        const pay = {idBills: idList, total}
+                        const pay = {idBills: idList, total: total/23000}
                         axios.post("http://localhost:8080/api/pay", pay).then(resp => {
                             window.open(resp.data);
                             navigate("/user-management/order/confirm")
                         })
-                    }else {
+                    } else if (selectedPay === "vnpay") {
+                        const idList = resp.data.map(item => item.id);
+
+                        const pay = {idBills: idList, total}
+                        axios.post("http://localhost:8080/api/pay/vnpay", pay).then(resp => {
+                            window.open(resp.data);
+                            navigate("/user-management/order/confirm")
+                        })
+                    } else {
                         toast.success("Đặt hàng thành công, vui lòng chờ chủ shop xác nhận !", {autoClose: 700})
                         navigate("/user-management/order/confirm")
                     }

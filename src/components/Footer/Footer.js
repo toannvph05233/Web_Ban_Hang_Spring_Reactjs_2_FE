@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className='footer bg-orange'
+    <footer className='footer'
             style={{
       bottom: '0' ,
-      width: '100%'}}
+      width: '100%',
+            background:'#333333'}}
     >
       <div className = "containerr py-4 text-center">
         <div className='flex align-center justify-center text-white fw-3 fs-14'>

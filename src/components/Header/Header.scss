@@ -2,12 +2,7 @@
 
 .header1{
 
-    background: rgb(215, 0, 24);
-    background: linear-gradient(180deg, rgb(215, 0, 24) 0%, rgb(215, 0, 24) 100%);
-
-    .header1-cnt-top{
-        border-bottom: 1px solid lighten($clr-orange, 10%);
-    }
+    background: #333333;
 
     @media screen and (max-width: 992px){
         .header1-cnt-top{

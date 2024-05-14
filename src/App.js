@@ -54,6 +54,7 @@ import TotalWeek from "./pages/ShopManagement/TotalWeek";
 import TotalMonth from "./pages/ShopManagement/TotalMonth";
 import DashBoardAdmin from "./components/Admin/DashBoardAdmin";
 import ListAccount from "./components/Admin/ListAccount";
+import ListAccountManager from "./components/Admin/ListAccountManager";
 
 
 function App() {
@@ -122,6 +123,7 @@ function App() {
                             <Route index element={<ProfileUser/>}/>
                             <Route path="/admin/profile" element={<ProfileUser/>}/>
                             <Route path="/admin/list-account" element={<ListAccount/>}/>
+                            <Route path="/admin/list-manager" element={<ListAccountManager/>}/>
                         </Route>
 
                         <Route path="/shop-management" element={<DashBoard/>}>

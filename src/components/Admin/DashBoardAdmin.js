@@ -27,9 +27,6 @@ function DashBoardAdmin() {
 
                     <ul className="nav__list">
                         <li className="nav__item">
-                            <Link  className={'cekkon'} to="/admin/profile">Thông tin</Link>
-                        </li>
-                        <li className="nav__item">
                             <Link className={'cekkon'} to="/">Quay lại home</Link>
                         </li>
                     </ul> :
@@ -38,7 +35,10 @@ function DashBoardAdmin() {
                             <Link  className={'cekkon'} to="/admin/profile">Thông tin</Link>
                         </li>
                         <li className="nav__item">
-                            <Link className={'cekkon'} to="/admin/list-account">Quản lý tài khoản</Link>
+                            <Link className={'cekkon'} to="/admin/list-account">Quản lý USER</Link>
+                        </li>
+                        <li className="nav__item">
+                            <Link className={'cekkon'} to="/admin/list-manager">Quản lý MANAGER</Link>
                         </li>
 
                     </ul>}

@@ -86,7 +86,7 @@ const Bill = () => {
 
     const saveBills = () => {
         if (user.address !== null && user.phone !== null) {
-            saveBill(idAccount, cartDetails, navigate, selectedOption, totalPrice/23000).then()
+            saveBill(idAccount, cartDetails, navigate, selectedOption, totalPrice).then()
         } else {
             toast.error("Vui lòng nhập thông tin địa chỉ nhận hàng", {autoClose: 700})
             toast.isActive()
@@ -238,7 +238,8 @@ const Bill = () => {
                             <span style={{fontSize: '16px', color: "orange"}}>Chọn loại thanh toán :  </span>
                             <select style={{fontSize: '16px'}} value={selectedOption} onChange={handleChange}>
                                 <option value="offline">Nhận hàng thanh toán</option>
-                                <option value="online">Thanh toán online</option>
+                                <option value="paypal">Thanh toán online PAYPAL</option>
+                                <option value="vnpay">Thanh toán online VNPAY</option>
                             </select>
 
                             <div className='cart-cfoot flex align-start justify-between py-3 bg-white'>
