@@ -42,7 +42,7 @@ const Navbar = () => {
               <i className='fa-solid fa-bag-shopping'></i>
             </span>
             <span className='navbar1-brand-txt mx-2' style={{fontSize : '18px' ,width : '110px' , marginTop : '5%'}}>
-              <span className='fw-7' >Home Mart</span>
+              <span className='fw-7' >Mua gì đây</span>
             </span>
           </Link>
         </div>

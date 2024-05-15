@@ -623,6 +623,8 @@ const Header = (props) => {
                                                     <div className="dropdown-menu m-0">
                                                         <Link to={'/user-management'} className="dropdown-item">Hồ
                                                             sơ</Link>
+                                                        <Link to={'/shop-management'} className="dropdown-item">Shop của
+                                                            tôi</Link>
                                                         <Dropdown.Divider/>
                                                         <Link to="/login" className="dropdown-item" onClick={() => {
                                                             logout()

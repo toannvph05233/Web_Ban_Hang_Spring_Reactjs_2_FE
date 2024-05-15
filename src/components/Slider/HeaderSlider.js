@@ -22,10 +22,10 @@ const HeaderSlider = () => {
         <div className='slider-content overflow-x-hidden'>
           <Slider {...settings}>
             <div className='slider-item'>
-              <img src = "https://firebasestorage.googleapis.com/v0/b/students-2950f.appspot.com/o/image%2Fslide.png?alt=media&token=5306a9a2-d7e0-4940-95b4-9a67bf1b6b62" alt = "" />
+              <img src = "https://toanphatcorp.vn/media/images/tin-tuc/xu-huong-dat-do-an-online-1.jpg" alt = "" />
             </div>
             <div className='slider-item'>
-              <img src = "https://firebasestorage.googleapis.com/v0/b/students-2950f.appspot.com/o/image%2Fslide3.png?alt=media&token=9d074151-263b-40fb-b5bd-d4a7923dff16" alt = "" />
+              <img src = "https://ipos.vn/wp-content/uploads/2022/10/Cac-ung-dung-dat-do-an-online.jpg" alt = "" />
             </div>
 
           </Slider>
